@@ -9,10 +9,7 @@ package classes;
  * @author juan.adsantos
  */
 public class Produto {
-
-
-
-    private String ID;
+    private int ID;
     private String tamanho;
     private String cor; //Combobox
     private String nomeProduto;
@@ -21,18 +18,73 @@ public class Produto {
     private double valor; 
     private String formaDePagamento; //Combobox
     private byte qtdParcelas; // Spinner
+    private int qtdProdutos;
+
+    public Produto() {
+    }
+
+    public Produto(int ID, String tamanho, String cor, String nomeProduto, String marca, String categoria, double valor, String formaDePagamento, byte qtdParcelas, int qtdProdutos) {
+        this.ID = ID;
+        this.tamanho = tamanho;
+        this.cor = cor;
+        this.nomeProduto = nomeProduto;
+        this.marca = marca;
+        this.categoria = categoria;
+        this.valor = valor;
+        this.formaDePagamento = formaDePagamento;
+        this.qtdParcelas = qtdParcelas;
+        this.qtdProdutos = qtdProdutos;
+    }
+
+    public Produto(String tamanho, String cor, String nomeProduto, String marca, String categoria, double valor, String formaDePagamento, byte qtdParcelas) {
+        this.tamanho = tamanho;
+        this.cor = cor;
+        this.nomeProduto = nomeProduto;
+        this.marca = marca;
+        this.categoria = categoria;
+        this.valor = valor;
+        this.formaDePagamento = formaDePagamento;
+        this.qtdParcelas = qtdParcelas;
+    }
+
+    public Produto(String tamanho, String cor, String nomeProduto, String marca, String categoria, double valor, String formaDePagamento, byte qtdParcelas, int qtdProdutos) {
+        this.tamanho = tamanho;
+        this.cor = cor;
+        this.nomeProduto = nomeProduto;
+        this.marca = marca;
+        this.categoria = categoria;
+        this.valor = valor;
+        this.formaDePagamento = formaDePagamento;
+        this.qtdParcelas = qtdParcelas;
+        this.qtdProdutos = qtdProdutos;
+    }
+
+    public Produto(int ID, String tamanho, String cor, String nomeProduto, String marca, String categoria, double valor, String formaDePagamento, byte qtdParcelas) {
+        this.ID = ID;
+        this.tamanho = tamanho;
+        this.cor = cor;
+        this.nomeProduto = nomeProduto;
+        this.marca = marca;
+        this.categoria = categoria;
+        this.valor = valor;
+        this.formaDePagamento = formaDePagamento;
+        this.qtdParcelas = qtdParcelas;
+    }
+
+
+
 
     /**
      * @return the ID
      */
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
     /**
      * @param ID the ID to set
      */
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
@@ -146,6 +198,14 @@ public class Produto {
      */
     public void setQtdParcelas(byte qtdParcelas) {
         this.qtdParcelas = qtdParcelas;
+    }
+
+    public int getQtdProdutos() {
+        return qtdProdutos;
+    }
+
+    public void setQtdProdutos(int qtdProdutos) {
+        this.qtdProdutos = qtdProdutos;
     }
 
 }
