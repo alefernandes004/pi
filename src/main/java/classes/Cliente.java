@@ -9,55 +9,16 @@ package classes;
  *
  * @author juan.adsantos
  */
-public class Cliente extends Endereco {
-    
-    private int id_cliente;
+public class Cliente {
+
     private String nome;
     private String CPF;
+    private String endereco;
     private String telefone;
-
-    public Cliente(String endereco, int numero, String cep, String bairro, String cidade, String complemento, String uf) {
-        super(endereco, numero, cep, bairro, cidade, complemento, uf);
-    }
-
-    public Cliente(int id_cliente, String nome, String CPF, String telefone, String email, String estadoCivil, String dataDeNascimento, int id_endereco, String endereco, int numero, String cep, String bairro, String cidade, String complemento, String uf) {
-        super(id_endereco, endereco, numero, cep, bairro, cidade, complemento, uf);
-        this.id_cliente = id_cliente;
-        this.nome = nome;
-        this.CPF = CPF;
-        this.telefone = telefone;
-        this.email = email;
-        this.estadoCivil = estadoCivil;
-        this.dataDeNascimento = dataDeNascimento;
-    }
     private String email;
+    private String sexo; // ComboBox
     private String estadoCivil; // ComboBox
     private String dataDeNascimento;
-
-    public Cliente() {
-    }
-
-    public Cliente(int id_cliente, String nome, String CPF, String telefone, String email, String estadoCivil, String dataDeNascimento) {
-        this.id_cliente = id_cliente;
-        this.nome = nome;
-        this.CPF = CPF;
-        this.telefone = telefone;
-        this.email = email;
-      
-        this.estadoCivil = estadoCivil;
-        this.dataDeNascimento = dataDeNascimento;
-    }
-
-    public Cliente( String nome, String CPF, String telefone, String email,  String estadoCivil, String dataDeNascimento) {
-        
-        this.nome = nome;
-        this.CPF = CPF;
-        this.telefone = telefone;
-        this.email = email;
- 
-        this.estadoCivil = estadoCivil;
-        this.dataDeNascimento = dataDeNascimento;
-    }
 
     /**
      * @return the nome
@@ -90,6 +51,16 @@ public class Cliente extends Endereco {
     /**
      * @return the endereco
      */
+    public String getEndereco() {
+        return endereco;
+    }
+
+    /**
+     * @param endereco the endereco to set
+     */
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 
     /**
      * @return the telefone
@@ -119,6 +90,19 @@ public class Cliente extends Endereco {
         this.email = email;
     }
 
+    /**
+     * @return the sexo
+     */
+    public String getSexo() {
+        return sexo;
+    }
+
+    /**
+     * @param sexo the sexo to set
+     */
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
 
     /**
      * @return the estadoCivil
@@ -146,14 +130,6 @@ public class Cliente extends Endereco {
      */
     public void setDataDeNascimento(String dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
-    }
-
-    public int getId_cliente() {
-        return id_cliente;
-    }
-
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
     }
 
 }

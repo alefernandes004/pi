@@ -35,7 +35,9 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"01", "Bola de Boliche", "250", "1"},
-                {"02", "Blusa", "400", "1"}
+                {"02", "Blusa", "400", "1"},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
                 "ID", "Produto", "Valor", "QTD"
