@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * @author juans
  */
 public class ClienteDAO {
-    public static String URL = "jdbc:mysql://localhost:3306/loja1";
+    public static String URL = "jdbc:mysql://localhost:3306/loja2";
     //Professor, add login e senha do seu banco de dados
     public static String login = "root";
     public static String senha = "adminadmin";
@@ -76,7 +76,7 @@ public class ClienteDAO {
             
             //Passo 3 - Preparar o comando SQL
             PreparedStatement comandoSQL = 
-            conexao.prepareStatement("select * from endereco inner join cliente on endereco.id_cliente = cliente.id_cliente;");
+            conexao.prepareStatement("SELECT * from cliente");
             
             
             //Passo 4 - Executar o comando SQL
@@ -94,17 +94,12 @@ public class ClienteDAO {
                 String email = rs.getString("email");
                 String estadoCivil = rs.getString("estadoCivil");
                 String dataDeNascimento = rs.getString("dataDeNascimento");
-                int id_endereco = rs.getInt("id_endereco");
+                String logradouro = rs.getString("logradouro");
                 String endereco = rs.getString("endereco");
-                String num = rs.getString("numero");
-                String cep = rs.getString("cep");
-                String bairro = rs.getString("bairro");
-                String cidade = rs.getString("cidade");
-                String complemento = rs.getString("complemento");
-                String uf = rs.getString("uf");
+                String numero = rs.getString("numero");
+                Cliente novoCliente = new Cliente(id, nome, cpf, telefone, email, estadoCivil, dataDeNascimento, logradouro, endereco, numero);
                 
-                Cliente novoCliente = new Cliente(id, nome, cpf, telefone, email, estadoCivil, dataDeNascimento, id_endereco, endereco, id, cep, bairro, cidade, complemento, uf);
-                
+            
                 //Adicionar o objeto à lista de retorno
                 listaClientes.add(novoCliente);
                 
@@ -135,7 +130,7 @@ public class ClienteDAO {
             //Passo 3 - Preparar o comando SQL
             PreparedStatement comandoSQL = 
             
-             conexao.prepareStatement("UPDATE cliente SET nome = ?,cpf = ?, telefone = ?, email = ?, estadoCivil = ?, dataDeNascimento = ? WHERE id_cliente = ?");
+             conexao.prepareStatement("UPDATE cliente SET nome = ?,cpf = ?, telefone = ?, email = ?, estadoCivil = ?, dataDeNascimento = ?, logradouro = ?, endereco = ?, numero = ? WHERE id_cliente = ?");
             
             //Passo 4 - Passar os parâmetros para o comandoSQL
              comandoSQL.setString(1, obj.getNome());
@@ -145,6 +140,9 @@ public class ClienteDAO {
             comandoSQL.setString(5, obj.getEstadoCivil());
             comandoSQL.setString(6, obj.getDataDeNascimento());
             comandoSQL.setInt(7, obj.getId_cliente());
+            comandoSQL.setString(8, obj.getLogradouro());
+            comandoSQL.setString(9, obj.getEndereco());
+            comandoSQL.setString(10, obj.getNumero());
             
             //Passo 5 - Executar o comando SQL
             int linhasAfetadas = comandoSQL.executeUpdate();
@@ -163,7 +161,7 @@ public class ClienteDAO {
         return retorno;
     }//Fim do metodo salvar
     
-         public static ArrayList<Cliente> buscarPorNome(String nome) {
+    public static ArrayList<Cliente> buscarPorNome(String nome) {
         ArrayList<Cliente> list = new ArrayList<>();
 
         Connection conexao = null;
@@ -175,7 +173,6 @@ public class ClienteDAO {
             conexao = DriverManager.getConnection(URL, login, senha);
 
             PreparedStatement comandoSQL = conexao.prepareStatement("SELECT * FROM cliente WHERE nome = ?");
-            PreparedStatement comandoSQL1 = conexao.prepareStatement("SELECT * FROM endereco WHERE id_endereco = ?");
             
             comandoSQL.setString(1, nome);
 //            comandoSQL.setDouble(2, a.getValorNota());
@@ -189,7 +186,11 @@ public class ClienteDAO {
                 String email = rs.getString("email");
                 String estadoCivil = rs.getString("estadoCivil");
                 String dataDeNascimento = rs.getString("dataDeNascimento");
-                Cliente novoCliente = new Cliente(id, nome1, cpf, telefone, email, estadoCivil, dataDeNascimento);
+                String logradouro = rs.getString("logradouro");
+                String endereco = rs.getString("endereco");
+                String numero = rs.getString("numero");
+                Cliente novoCliente = new Cliente(id, nome1, cpf, telefone, email, estadoCivil, dataDeNascimento, logradouro, endereco, numero);
+                
                 list.add(novoCliente);
             }
             
@@ -201,7 +202,7 @@ public class ClienteDAO {
         return list;
     }
     
-public static boolean excluir(int idExcluir){
+    public static boolean excluir(int idExcluir){
         boolean retorno = false;
         Connection conexao = null;
         

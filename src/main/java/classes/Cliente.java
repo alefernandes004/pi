@@ -9,54 +9,45 @@ package classes;
  *
  * @author juan.adsantos
  */
-public class Cliente extends Endereco {
+public class Cliente{
     
     private int id_cliente;
     private String nome;
     private String CPF;
     private String telefone;
-
-    public Cliente(String endereco, int numero, String cep, String bairro, String cidade, String complemento, String uf) {
-        super(endereco, numero, cep, bairro, cidade, complemento, uf);
-    }
-
-    public Cliente(int id_cliente, String nome, String CPF, String telefone, String email, String estadoCivil, String dataDeNascimento, int id_endereco, String endereco, int numero, String cep, String bairro, String cidade, String complemento, String uf) {
-        super(id_endereco, endereco, numero, cep, bairro, cidade, complemento, uf);
-        this.id_cliente = id_cliente;
-        this.nome = nome;
-        this.CPF = CPF;
-        this.telefone = telefone;
-        this.email = email;
-        this.estadoCivil = estadoCivil;
-        this.dataDeNascimento = dataDeNascimento;
-    }
     private String email;
     private String estadoCivil; // ComboBox
     private String dataDeNascimento;
+    private String logradouro;
+    private String endereco;
+    private String numero;
 
     public Cliente() {
     }
 
-    public Cliente(int id_cliente, String nome, String CPF, String telefone, String email, String estadoCivil, String dataDeNascimento) {
+    public Cliente(String nome, String CPF, String telefone, String email, String estadoCivil, String dataDeNascimento, String logradouro, String endereco, String numero) {
+        this.nome = nome;
+        this.CPF = CPF;
+        this.telefone = telefone;
+        this.email = email;
+        this.estadoCivil = estadoCivil;
+        this.dataDeNascimento = dataDeNascimento;
+        this.logradouro = logradouro;
+        this.endereco = endereco;
+        this.numero = numero;
+    }
+
+    public Cliente(int id_cliente, String nome, String CPF, String telefone, String email, String estadoCivil, String dataDeNascimento, String logradouro, String endereco, String numero) {
         this.id_cliente = id_cliente;
         this.nome = nome;
         this.CPF = CPF;
         this.telefone = telefone;
         this.email = email;
-      
         this.estadoCivil = estadoCivil;
         this.dataDeNascimento = dataDeNascimento;
-    }
-
-    public Cliente( String nome, String CPF, String telefone, String email,  String estadoCivil, String dataDeNascimento) {
-        
-        this.nome = nome;
-        this.CPF = CPF;
-        this.telefone = telefone;
-        this.email = email;
- 
-        this.estadoCivil = estadoCivil;
-        this.dataDeNascimento = dataDeNascimento;
+        this.logradouro = logradouro;
+        this.endereco = endereco;
+        this.numero = numero;
     }
 
     /**
@@ -154,6 +145,30 @@ public class Cliente extends Endereco {
 
     public void setId_cliente(int id_cliente) {
         this.id_cliente = id_cliente;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
 }

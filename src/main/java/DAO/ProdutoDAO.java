@@ -1,71 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package DAO;
-
-import classes.Produto;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-/**
- *
- * @author juans
- */
-public class ProdutoDAO {
-    public static String URL = "jdbc:mysql://localhost:3306/loja1";
-    //Professor, add login e senha do seu banco de dados
-    public static String login = "root";
-    public static String senha = "adminadmin";
-    
-    public static boolean salvar(Produto obj){
-        boolean retorno = false;
-        Connection conexao = null;
-        try {
-            //Passo 1 - Carregar o Driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            //Passo 2 - Abrir a conexao com o banco
-            conexao = DriverManager.getConnection(URL, login, senha);
-            
-            PreparedStatement comandoSQL = 
-            conexao.prepareStatement("INSERT INTO produto (nome,tamanho, cor, marca, valor, formaDePagamento, qtdParcelas, categoria, qtdProduto) VALUES(?,?, ?, ?, ?, ?, ?, ?, ?)");
-            
-            //Passo 4 - Passar os parâmetros para o comandoSQL
-            comandoSQL.setString(1, obj.getNomeProduto());
-            comandoSQL.setString(2, obj.getTamanho());
-            comandoSQL.setString(3, obj.getCor());
-            comandoSQL.setString(4, obj.getMarca());
-            comandoSQL.setDouble(5, obj.getValor());
-            comandoSQL.setString(6, obj.getFormaDePagamento());
-            comandoSQL.setByte(7, obj.getQtdParcelas());
-            comandoSQL.setString(8, obj.getCategoria());
-            comandoSQL.setInt(9, obj.getQtdProdutos());
-            
-            //Passo 5 - Executar o comando SQL
-            int linhasAfetadas = comandoSQL.executeUpdate();
-            
-            if(linhasAfetadas >0){
-                retorno = true;
-            }
-            
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return retorno;
-    }//Fim do metodo salvar
-    
-    public static ArrayList<Produto> listar(){
+    /*public static ArrayList<Produto> listar(){
         
         //Variavel de retorno
         ArrayList<Produto> listaProduto = new ArrayList<>();
@@ -92,6 +25,7 @@ public class ProdutoDAO {
                 /*nome,tamanho, cor, marca, valor, formaDePagamento, qtdParcelas*/
                 /*onexao.prepareStatement("INSERT INTO cliente (nome,cpf, telefone, email, sexo, estadoCivil, dataDeNascimento);*/
                 //Para cada linha do rs, crio um objeto e jogo na lista
+/*
                 int id = rs.getInt("id_produto");
                 String nome = rs.getString("nome");
                 String tamanho = rs.getString("tamanho");
@@ -165,7 +99,7 @@ public class ProdutoDAO {
         return retorno;
     }//Fim do metodo salvar
     
-         public static ArrayList<Produto> buscarPorNome(String nome) {
+    /*public static ArrayList<Produto> buscarPorNome(String nome) {
         ArrayList<Produto> list = new ArrayList<>();
 
         Connection conexao = null;
@@ -210,7 +144,7 @@ public class ProdutoDAO {
         return list;
     }
     
-public static boolean excluir(int idExcluir){
+    public static boolean excluir(int idExcluir){
         boolean retorno = false;
         Connection conexao = null;
         
@@ -245,4 +179,101 @@ public static boolean excluir(int idExcluir){
         
         return retorno;
     }//Fim do metodo salvar
+    */
+package DAO;
+
+import classes.Produto;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author juans
+ */
+public class ProdutoDAO {
+    public static String URL = "jdbc:mysql://localhost:3306/loja2";
+    //Professor, add login e senha do seu banco de dados
+    public static String login = "root";
+    public static String senha = "adminadmin";
+    
+    public static boolean salvar(Produto obj){
+        boolean retorno = false;
+        Connection conexao = null;
+        try {
+            //Passo 1 - Carregar o Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            //Passo 2 - Abrir a conexao com o banco
+            conexao = DriverManager.getConnection(URL, login, senha);
+            
+            PreparedStatement comandoSQL = 
+            conexao.prepareStatement("INSERT INTO produto (nome,tamanho, cor, marca, valor, formaDePagamento, qtdParcelas, categoria, qtdProduto) VALUES(?,?, ?, ?, ?, ?, ?, ?, ?)");
+            
+            //Passo 4 - Passar os parâmetros para o comandoSQL
+            comandoSQL.setString(1, obj.getNomeProduto());
+            comandoSQL.setString(2, obj.getTamanho());
+            comandoSQL.setString(3, obj.getCor());
+            comandoSQL.setString(4, obj.getMarca());
+            comandoSQL.setDouble(5, obj.getValor());
+            comandoSQL.setString(6, obj.getFormaDePagamento());
+            comandoSQL.setByte(7, obj.getQtdParcelas());
+            comandoSQL.setString(8, obj.getCategoria());
+            comandoSQL.setInt(9, obj.getQtdProdutos());
+            
+            //Passo 5 - Executar o comando SQL
+            int linhasAfetadas = comandoSQL.executeUpdate();
+            
+            if(linhasAfetadas >0){
+                retorno = true;
+            }
+            
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return retorno;
+    }//Fim do metodo salvar
+    
+    public static boolean decrementar(int idProduto, int qtdUtilizada){
+                boolean retorno = false;
+        Connection conexao = null;
+        
+        try {
+            //Passo 1 - Carregar o Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            //Passo 2 - Abrir a conexao com o banco
+            conexao = DriverManager.getConnection(URL, login, senha);
+            
+            //Passo 3 - Preparar o comando SQL
+            PreparedStatement comandoSQL = 
+            
+             conexao.prepareStatement("UPDATE produto SET qtdProduto = qtdProduto - ? WHERE id_cliente = ?");
+            
+            //Passo 4 - Passar os parâmetros para o comandoSQL
+             comandoSQL.setInt(1, qtdUtilizada);
+             comandoSQL.setInt(2, idProduto);
+            
+            //Passo 5 - Executar o comando SQL
+            int linhasAfetadas = comandoSQL.executeUpdate();
+            
+            if(linhasAfetadas >0){
+                retorno = true;
+            }
+            
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return retorno;
+    }
 }
