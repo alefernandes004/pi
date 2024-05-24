@@ -9,19 +9,27 @@ package classes;
  *
  * @author juan.adsantos
  */
+<<<<<<< HEAD
 public class Cliente{
     
     private int id_cliente;
+=======
+public class Cliente {
+
+>>>>>>> fae33251b8e83deb7a816c4f27953750e48fc07c
     private String nome;
     private String CPF;
+    private String endereco;
     private String telefone;
     private String email;
+    private String sexo; // ComboBox
     private String estadoCivil; // ComboBox
     private String dataDeNascimento;
     private String logradouro;
     private String endereco;
     private String numero;
 
+<<<<<<< HEAD
     public Cliente() {
     }
 
@@ -50,6 +58,8 @@ public class Cliente{
         this.numero = numero;
     }
 
+=======
+>>>>>>> fae33251b8e83deb7a816c4f27953750e48fc07c
     /**
      * @return the nome
      */
@@ -81,6 +91,16 @@ public class Cliente{
     /**
      * @return the endereco
      */
+    public String getEndereco() {
+        return endereco;
+    }
+
+    /**
+     * @param endereco the endereco to set
+     */
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 
     /**
      * @return the telefone
@@ -110,6 +130,19 @@ public class Cliente{
         this.email = email;
     }
 
+    /**
+     * @return the sexo
+     */
+    public String getSexo() {
+        return sexo;
+    }
+
+    /**
+     * @param sexo the sexo to set
+     */
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
 
     /**
      * @return the estadoCivil
@@ -139,6 +172,7 @@ public class Cliente{
         this.dataDeNascimento = dataDeNascimento;
     }
 
+<<<<<<< HEAD
     public int getId_cliente() {
         return id_cliente;
     }
@@ -171,4 +205,6 @@ public class Cliente{
         this.numero = numero;
     }
 
+=======
+>>>>>>> fae33251b8e83deb7a816c4f27953750e48fc07c
 }
