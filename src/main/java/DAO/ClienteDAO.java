@@ -19,7 +19,7 @@ public class ClienteDAO {
     public static String URL = "jdbc:mysql://localhost:3306/loja2";
     //Professor, add login e senha do seu banco de dados
     public static String login = "root";
-    public static String senha = "adminadmin";
+    public static String senha = "P@$$w0rd";
     
     public static boolean salvar(Cliente obj){
         boolean retorno = false;

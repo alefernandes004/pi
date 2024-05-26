@@ -10,6 +10,7 @@ package classes;
  * @author juan.adsantos
  */
 
+
 public class Cliente{
     
     private int id_cliente;
