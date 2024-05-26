@@ -1,0 +1,54 @@
+-- Cria o banco de dados
+CREATE DATABASE loja2;
+USE loja2;
+CREATE TABLE cliente(
+    id_cliente INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    cpf VARCHAR(11) NOT NULL,
+    telefone VARCHAR(20) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    estadoCivil ENUM('Solteiro', 'Casado', 'Divorciado', 'Viuvo', 'Uniao Estavel') NOT NULL,
+    dataDeNascimento date NOT NULL,
+    logradouro enum('Rua', 'Avenida', 'Condominio', 'Outro') not null,
+    endereco varchar(100) not null,
+    numero varchar(100) not null,
+    PRIMARY KEY (id_cliente)
+);
+select * from cliente;
+insert into cliente(id_cliente, nome, cpf, telefone, email, estadoCivil, dataDeNascimento, logradouro, endereco, numero) values (69, 'Teste', '11111111111', '12','teste@.com', 'Solteiro', '2023-12-12', 'Rua', 'Augusta', '12A');
+
+CREATE TABLE produto (
+    id_produto INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    tamanho VARCHAR(10) NOT NULL,
+    cor enum('preto', 'marrom', 'branco', 'azul', 'verde') NOT NULL,
+    marca VARCHAR(100) NOT NULL,
+    categoria enum('tenis', 'blusa', 'camiseta', 'shorts', 'calca') NOT NULL,
+    valor DOUBLE UNSIGNED NOT NULL,
+    formaDePagamento ENUM('pix', 'Debito', 'Dinheiro', 'Credito') NOT NULL,
+    qtdProduto INT UNSIGNED NOT NULL,
+    PRIMARY KEY (id_produto)
+);
+select * from produto;
+
+create table itemPedido(
+primary key (id_itemPedido),
+id_itemPedido int unsigned not null auto_increment,
+id_pedido int unsigned not null,
+id_produto int unsigned not null,
+qtd int unsigned not null,
+valorUnitario double not null,
+foreign key (id_pedido) references pedido(id_venda),
+foreign key (id_produto) references produto(id_produto)
+);
+alter table itemPedido add foreign key (id_pedido) references pedido(id_venda);
+CREATE TABLE pedido( #pedido
+    id_venda INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    id_cliente int unsigned not null,
+    valorTotal double not null,
+    dataVenda date not null,
+    PRIMARY KEY (id_venda)
+);
+
+select * from itemPedido;
+select * from pedido;
