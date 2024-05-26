@@ -9,17 +9,12 @@ package classes;
  *
  * @author juan.adsantos
  */
-<<<<<<< HEAD
+
 public class Cliente{
     
     private int id_cliente;
-=======
-public class Cliente {
-
->>>>>>> fae33251b8e83deb7a816c4f27953750e48fc07c
     private String nome;
     private String CPF;
-    private String endereco;
     private String telefone;
     private String email;
     private String sexo; // ComboBox
@@ -29,7 +24,6 @@ public class Cliente {
     private String endereco;
     private String numero;
 
-<<<<<<< HEAD
     public Cliente() {
     }
 
@@ -58,8 +52,7 @@ public class Cliente {
         this.numero = numero;
     }
 
-=======
->>>>>>> fae33251b8e83deb7a816c4f27953750e48fc07c
+
     /**
      * @return the nome
      */
@@ -172,7 +165,6 @@ public class Cliente {
         this.dataDeNascimento = dataDeNascimento;
     }
 
-<<<<<<< HEAD
     public int getId_cliente() {
         return id_cliente;
     }
@@ -189,14 +181,6 @@ public class Cliente {
         this.logradouro = logradouro;
     }
 
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
     public String getNumero() {
         return numero;
     }
@@ -205,6 +189,5 @@ public class Cliente {
         this.numero = numero;
     }
 
-=======
->>>>>>> fae33251b8e83deb7a816c4f27953750e48fc07c
+
 }

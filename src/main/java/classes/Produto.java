@@ -7,28 +7,51 @@ package classes;
  */
 public class Produto {
 
-    private String ID;
+    private int ID;
     private String tamanho;
     private String cor; //Combobox
     private String nomeProduto;
     private String marca;
     private String categoria; //Combobox
     private double valor; 
-    private String formaDePagamento; //Combobox
-    private byte qtdParcelas; // Spinner
-    private int estoque;
+    private String formaDePagamento; //Combobox; // Spinner
+    private int qtdProduto;
+
+    public Produto(String tamanho, String cor, String nomeProduto, String marca, String categoria, double valor, String formaDePagamento, int qtdProduto) {
+        this.tamanho = tamanho;
+        this.cor = cor;
+        this.nomeProduto = nomeProduto;
+        this.marca = marca;
+        this.categoria = categoria;
+        this.valor = valor;
+        this.formaDePagamento = formaDePagamento;
+        this.qtdProduto = qtdProduto;
+    }
+
+    public Produto(int ID, String tamanho, String cor, String nomeProduto, String marca, String categoria, double valor, String formaDePagamento, int qtdProduto) {
+        this.ID = ID;
+        this.tamanho = tamanho;
+        this.cor = cor;
+        this.nomeProduto = nomeProduto;
+        this.marca = marca;
+        this.categoria = categoria;
+        this.valor = valor;
+        this.formaDePagamento = formaDePagamento;
+        
+        this.qtdProduto = qtdProduto;
+    }
 
     /**
      * @return the ID
      */
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
     /**
      * @param ID the ID to set
      */
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
@@ -130,26 +153,12 @@ public class Produto {
         this.formaDePagamento = formaDePagamento;
     }
 
-    /**
-     * @return the qtdParcelas
-     */
-    public byte getQtdParcelas() {
-        return qtdParcelas;
+    public int getQtdProduto() {
+        return qtdProduto;
     }
 
-    /**
-     * @param qtdParcelas the qtdParcelas to set
-     */
-    public void setQtdParcelas(byte qtdParcelas) {
-        this.qtdParcelas = qtdParcelas;
-    }
-
-    public int getEstoque() {
-        return estoque;
-    }
-
-    public void setEstoque(int estoque) {
-        this.estoque = estoque;
+    public void setQtdProduto(int estoque) {
+        this.qtdProduto = estoque;
     }
 
 }

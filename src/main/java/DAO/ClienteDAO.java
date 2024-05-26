@@ -33,16 +33,18 @@ public class ClienteDAO {
             
             //Passo 3 - Preparar o comando SQL
             PreparedStatement comandoSQL = 
-            conexao.prepareStatement("INSERT INTO cliente (nome,cpf, telefone, email, estadoCivil, dataDeNascimento) VALUES(?,?, ?, ?, ?, ?)");
+            conexao.prepareStatement("INSERT INTO cliente (nome,cpf, telefone, email, estadoCivil, dataDeNascimento, logradouro, endereco, numero) VALUES(?,?, ?, ?, ?, ?, ?, ?, ?)");
             
             //Passo 4 - Passar os parâmetros para o comandoSQL
             comandoSQL.setString(1, obj.getNome());
             comandoSQL.setString(2, obj.getCPF());
             comandoSQL.setString(3, obj.getTelefone());
             comandoSQL.setString(4, obj.getEmail());
-            
             comandoSQL.setString(5, obj.getEstadoCivil());
             comandoSQL.setString(6, obj.getDataDeNascimento());
+            comandoSQL.setString(7, obj.getLogradouro());
+            comandoSQL.setString(8, obj.getEndereco());
+            comandoSQL.setString(9, obj.getNumero());
             
             //Passo 5 - Executar o comando SQL
             int linhasAfetadas = comandoSQL.executeUpdate();
@@ -139,10 +141,10 @@ public class ClienteDAO {
             comandoSQL.setString(4, obj.getEmail());
             comandoSQL.setString(5, obj.getEstadoCivil());
             comandoSQL.setString(6, obj.getDataDeNascimento());
-            comandoSQL.setInt(7, obj.getId_cliente());
-            comandoSQL.setString(8, obj.getLogradouro());
-            comandoSQL.setString(9, obj.getEndereco());
-            comandoSQL.setString(10, obj.getNumero());
+            comandoSQL.setString(7, obj.getLogradouro());
+            comandoSQL.setString(8, obj.getEndereco());
+            comandoSQL.setString(9, obj.getNumero());
+            comandoSQL.setInt(10, obj.getId_cliente());
             
             //Passo 5 - Executar o comando SQL
             int linhasAfetadas = comandoSQL.executeUpdate();
