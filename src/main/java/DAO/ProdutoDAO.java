@@ -69,7 +69,7 @@
             //Passo 3 - Preparar o comando SQL
             PreparedStatement comandoSQL = 
             
-             conexao.prepareStatement("UPDATE produto SET nome = ?,tamanho = ?, cor = ?, marca = ?, categoria = ?, valor = ?, formaDePagamento = ?, qtdParcelas = ?, qtdProduto WHERE id_cliente = ?");
+             conexao.prepareStatement("UPDATE produto SET nome = ?,tamanho = ?, cor = ?, marca = ?, categoria = ?, valor = ?, formaDePagamento = ?, qtdParcelas = ?, qtdProduto WHERE id_produto = ?");
             
             //Passo 4 - Passar os parâmetros para o comandoSQL
              comandoSQL.setString(1, obj.getNomeProduto());
@@ -257,7 +257,7 @@ public class ProdutoDAO {
             //Passo 3 - Preparar o comando SQL
             PreparedStatement comandoSQL = 
             
-             conexao.prepareStatement("UPDATE produto SET qtdProduto = qtdProduto - ? WHERE id_cliente = ?");
+             conexao.prepareStatement("UPDATE produto SET qtdProduto = qtdProduto - ? WHERE id_produto = ?");
             
             //Passo 4 - Passar os parâmetros para o comandoSQL
              comandoSQL.setInt(1, qtdUtilizada);
@@ -396,6 +396,49 @@ public class ProdutoDAO {
             //Passo 4 - Passar os parâmetros para o comandoSQL
             comandoSQL.setInt(1, idExcluir);
             
+            
+            //Passo 5 - Executar o comando SQL
+            int linhasAfetadas = comandoSQL.executeUpdate();
+            
+            if(linhasAfetadas >0){
+                retorno = true;
+            }
+            
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return retorno;
+    }
+      public static boolean alterar(Produto obj){
+        boolean retorno = false;
+        Connection conexao = null;
+        
+        try {
+            //Passo 1 - Carregar o Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            //Passo 2 - Abrir a conexao com o banco
+            conexao = DriverManager.getConnection(URL, login, senha);
+            
+            //Passo 3 - Preparar o comando SQL
+            PreparedStatement comandoSQL = 
+            
+             conexao.prepareStatement("UPDATE produto SET nome = ?,tamanho = ?, cor = ?, marca = ?, categoria = ?, valor = ?, formaDePagamento = ?, qtdProduto = ? WHERE id_produto = ?");
+            
+            //Passo 4 - Passar os parâmetros para o comandoSQL
+             comandoSQL.setString(1, obj.getNomeProduto());
+            comandoSQL.setString(2, obj.getTamanho());
+            comandoSQL.setString(3, obj.getCor());
+            comandoSQL.setString(4, obj.getMarca());
+            comandoSQL.setString(5, obj.getCategoria());
+            comandoSQL.setDouble(6, obj.getValor());
+            comandoSQL.setString(7, obj.getFormaDePagamento());
+            comandoSQL.setInt(8, obj.getQtdProduto());
+            comandoSQL.setInt(9, obj.getID());
             
             //Passo 5 - Executar o comando SQL
             int linhasAfetadas = comandoSQL.executeUpdate();

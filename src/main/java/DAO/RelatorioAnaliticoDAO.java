@@ -24,7 +24,7 @@ public class RelatorioAnaliticoDAO {
     public static String senha = "P@$$w0rd";
     
     
-        public static ArrayList<RelatorioAnalitico> listarPorPedido(int idVenda){
+        public static ArrayList<RelatorioAnalitico> listarPorVenda(int idVenda){
         Connection conexao = null;
         ResultSet rs = null;
         ArrayList<RelatorioAnalitico> listaRetorno = new ArrayList<>();
@@ -36,7 +36,7 @@ public class RelatorioAnaliticoDAO {
          String sql = "SELECT ItemPedido.id_produto, Produto.nome, ItemPedido.valorUnitario, ItemPedido.qtd " +
              "FROM ItemPedido " +
              "INNER JOIN Produto ON ItemPedido.id_produto = Produto.id_produto " +
-             "WHERE ItemPedido.id_pedido = ?";
+             "WHERE id_pedido = ?";
 
 
             PreparedStatement comandoSQL = conexao.prepareStatement(sql);
